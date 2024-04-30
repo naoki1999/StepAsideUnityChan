@@ -32,8 +32,14 @@ public class ItemDelete : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (this.transform.position.z < this.unitychan.transform.position.z) 
+        //Unityちゃんと各オブジェクトの相対距離を求める
+        this.difference 
+            = this.unitychan.transform.position.z - this.transform.position.z;
+
+        //各オブジェクトがUnityちゃんよりも後方の画面外に遷移した場合 (画面外 = 相対距離が6以上)
+        if (this.difference > 6.0f) 
         {
+            //オブジェクトを破棄
             Destroy(this.gameObject);
         }
         
